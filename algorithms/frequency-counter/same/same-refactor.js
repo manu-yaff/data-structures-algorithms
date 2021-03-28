@@ -28,10 +28,3 @@ function same1(arr1, arr2) {
 
   return true
 }
-
-// test naive approach
-console.log('naive approach:')
-console.log(same3([1,2,3,4], [1,4,9,16]))
-console.log(same3([1,2,3], [1,9]))
-console.log(same3([1,2,1], [4,4,1]))
-console.log(same3([1,2,3,2,5],[9,1,4,4,11]))
