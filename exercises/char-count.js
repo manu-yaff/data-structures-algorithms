@@ -1,4 +1,4 @@
-/*
+/**
  * Write a function which takes in a string and returns the counts of each character in the string
  * Consider only alphanumeric chars
  * Only consider lower cases chars
