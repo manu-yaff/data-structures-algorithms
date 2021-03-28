@@ -81,33 +81,12 @@ function same3(array1, array2) {
     return false
   }
 
-  array1.forEach(element => frequency1[element] = ++frequency1[element] || 1)
-  array2.forEach(element => frequency2[element] = ++frequency2[element] || 1)
-  
+  array1.forEach(element => frequency1[element] = (frequency1[element] || 0) + 1)
+  array2.forEach(element => frequency2[element] = (frequency2[element] || 0) + 1)
   for(let key in frequency1) {
     if ((frequency2[key ** 2]) !== frequency1[key]) {
       return false
     }
   }
-  return true;
+  return true
 }
-
-// test naive approach
-console.log('naive approach:')
-console.log('true = ', same1([1,2,3,4], [1,4,9,16]))
-console.log('false = ', same1([1,2,3], [1,9]))
-console.log('false = ', same1([1,2,1], [4,4,1]))
-
-// test sort approach
-console.log('sort approach:')
-console.log('true = ', same2([1,2,3,4], [1,4,9,16]))
-console.log('false = ', same2([1,2,3], [1,9]))
-console.log('false = ', same2([1,2,1], [4,4,1]))
-
-// test frequency pattern with object approach
-console.log('frequency pattern approach:')
-console.log('true = ', same3([1,2,3,4], [1,4,9,16]))
-console.log('false = ', same3([1,2,3], [1,9]))
-console.log('true = ', same3([1,2,3], [1,4,9]))
-console.log('true = ', same3([1,2,3,2], [9,1,4,4]))
-console.log('false = ', same3([10,2,4,5],[1,2,3,4])) 
