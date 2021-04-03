@@ -4,6 +4,9 @@
  * in the second string. In other words, the function should check whether the
  * characters in the first string appear somewhere in the second string, without
  * their order changing
+ * 
+ * Input: 'hello', 'hello world'
+ * Output: true
  */
 
 // Multiple pointers approach
@@ -14,10 +17,11 @@
 // Input: s1: String, s2: String
   // start1 <- 0
   // start2 <- 0
+  
   // while start2 < s2.length
     
     // if s2[start2] == s1[start1]
-      // start1++
+      // start1 = start1 + 1
     // end if
 
     // if start1 == s1.length
@@ -26,9 +30,9 @@
     
     // start2++
   
-    // end while
+  // end while
 
-    // return false
+  // return false
 
 function isSubsequence (s1, s2) {
   let start1 = 0
