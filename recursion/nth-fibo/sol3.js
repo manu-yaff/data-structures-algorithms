@@ -1,20 +1,11 @@
-// Time O(n), Space: O(1)
-function getNthFib(n) {
-	if (n === 1) return 0;
+// Time: O(n), Space: O(n)
+function getNthFib(n, memo = { 1: 0, 2: 1 }) {
+  if (n === 1) return 0;
 	if (n === 2) return 1;
-	
-	let s0 = 0;
-	let s1 = 1;
-	
-	let result = 0;
-	
-	for (let i = 2; i < n; i++) {
-		result = s0 + s1;
-		s0 = s1;
-		s1 = result;
+	if (n in memo) {
+		return memo[n];
+	} else {
+		memo[n] = getNthFib(n - 1, memo) + getNthFib(n - 2, memo);
+		return memo[n];
 	}
-	
-	return result;
-	
 }
-
