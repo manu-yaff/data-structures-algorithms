@@ -15,11 +15,11 @@
 // Space Complexity O(1)
 function largestAltitude(gain) {
   let highest = 0;
-  let current_altitude = 0;
+  let currentAltitude = 0;
 
-  for (const net_gain of gain) {
-    current_altitude += net_gain;
-    highest = Math.max(current_altitude, highest);
+  for (const netGain of gain) {
+    currentAltitude += netGain;
+    highest = Math.max(currentAltitude, highest);
   }
 
   return highest;

@@ -18,19 +18,19 @@
 function removeDuplicates(nums) {
   if (nums.length === 1) return 1;
 
-  let last_unique_index = 1;
-  let last_unique_value = nums[0];
+  let lastUniqueIndex = 1;
+  let lastUniqueValue = nums[0];
 
   for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== last_unique_value) {
-      nums[last_unique_index] = nums[i];
+    if (nums[i] !== lastUniqueValue) {
+      nums[lastUniqueIndex] = nums[i];
 
-      last_unique_value = nums[i];
-      last_unique_index++;
+      lastUniqueValue = nums[i];
+      lastUniqueIndex++;
     }
   }
 
-  return last_unique_index;
+  return lastUniqueIndex;
 }
 
 module.exports = removeDuplicates;
