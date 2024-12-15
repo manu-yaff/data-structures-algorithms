@@ -105,15 +105,33 @@ class LinkedList {
   }
 
   /**
-   * displays list elements
+   * helper to display list elements
+   * for testing purposes
    */
-  print() {
-    let currentNode = this.head;
+  static print(head) {
+    let currentNode = head;
 
     while (currentNode !== null) {
-      console.log(currentNode.value);
+      console.log(currentNode.val);
       currentNode = currentNode.next;
     }
+  }
+
+  /**
+   * helper to get list as an array of elements
+   * for testing purposes
+   */
+  static getAsArray(head) {
+    const array = [];
+
+    let currentNode = head;
+
+    while (currentNode !== null) {
+      array.push(currentNode.val);
+      currentNode = currentNode.next;
+    }
+
+    return array;
   }
 }
 
