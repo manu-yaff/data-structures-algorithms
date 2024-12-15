@@ -9,6 +9,7 @@
  * - insertion O(1) -> insertion in the middle is O(n)
  * - deletion O(n)
  * - insertion O(n)
+ * - traversal in reverse order O(n^2)
  */
 
 class Node {
