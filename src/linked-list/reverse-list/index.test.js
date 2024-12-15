@@ -14,7 +14,7 @@ describe(reverseList.name, () => {
 
     const reversedHead = reverseList(list.head);
 
-    expect(reversedHead.value).toBe(1);
+    expect(reversedHead.val).toBe(1);
   });
 
   it('should return head of inverted list', () => {
@@ -24,7 +24,8 @@ describe(reverseList.name, () => {
     list.add(3);
 
     const reversedHead = reverseList(list.head);
+    const reversedList = LinkedList.getAsArray(reversedHead);
 
-    expect(reversedHead.value).toBe(3);
+    expect(reversedList).toEqual([3, 2, 1]);
   });
 });

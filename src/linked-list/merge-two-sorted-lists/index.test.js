@@ -13,17 +13,18 @@ describe(mergeTwoLists.name, () => {
     l2.add(3);
     l2.add(4);
 
-    const mergedList = mergeTwoLists(l1.head, l2.head);
+    const mergedListHead = mergeTwoLists(l1.head, l2.head);
+    const newList = LinkedList.getAsArray(mergedListHead);
 
-    expect(mergedList.value).toBe(1);
+    expect(newList).toEqual([1, 1, 2, 3, 4, 4]);
   });
 
   it('should merge two sorted list when both list are empty', () => {
     const l1 = new LinkedList();
     const l2 = new LinkedList();
 
-    const mergedList = mergeTwoLists(l1.head, l2.head);
-    expect(mergedList).toBe(null);
+    const mergedListHead = mergeTwoLists(l1.head, l2.head);
+    expect(mergedListHead).toBe(null);
   });
 
   it('should merge two sorted list when one list is empty', () => {
@@ -32,9 +33,9 @@ describe(mergeTwoLists.name, () => {
 
     l2.add(0);
 
-    const mergedList = mergeTwoLists(l1.head, l2.head);
+    const mergedListHead = mergeTwoLists(l1.head, l2.head);
 
-    expect(mergedList.value).toBe(0);
-    expect(mergedList).toBe(l2.head);
+    expect(mergedListHead.val).toBe(0);
+    expect(mergedListHead).toBe(l2.head);
   });
 });

@@ -16,11 +16,11 @@ function reverseTraversal(head, tail) {
       prevTail = prevTail.next;
     }
 
-    result.push(currentTail.value);
+    result.push(currentTail.val);
     currentTail = prevTail;
   }
 
-  result.push(head.value);
+  result.push(head.val);
 
   return result;
 }
