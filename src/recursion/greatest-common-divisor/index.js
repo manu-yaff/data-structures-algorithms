@@ -1,6 +1,13 @@
+/**
+ * Write recursive code to calculate the Greatest Common Divisor (GCD) of Two Positive Numbers.
+ *
+ * Input: a = 12, b = 18
+ * Output: 6
+ *
+ */
+
 // Time complexity O(log(min(a,b)))
 // Space complexity O(log(min(a,b)))
-
 function calculateGCD(a, b) {
   if (a % b === 0) {
     return b;
@@ -12,11 +19,4 @@ function calculateGCD(a, b) {
   return calculateGCD(min, max % min);
 }
 
-// second approach
-function calculateGCD(a, b) {
-  if (b === 0) {
-    return a;
-  }
-
-  return calculateGCD(b, a % b);
-}
+module.exports = calculateGCD;
