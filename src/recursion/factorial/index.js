@@ -1,3 +1,13 @@
+/**
+ * Factorial
+ *
+ * Calculate the Factorial of a Positive Number Using Recursion
+ *
+ * Input: 5
+ * Output: 120
+ *
+ */
+
 // Time complexity O(n)
 // Space complexity O(n)
 function calculateFactorial(num) {
@@ -5,3 +15,5 @@ function calculateFactorial(num) {
 
   return num * calculateFactorial(num - 1);
 }
+
+module.exports = calculateFactorial;
