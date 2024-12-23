@@ -35,4 +35,27 @@ function binarySearch(list, item) {
   return -1;
 }
 
-module.exports = binarySearch;
+function binarySearchRecursive(list, target, left, right) {
+  if (right < left) {
+    return -1;
+  }
+
+  let middle = Math.floor((left + right) / 2);
+
+  if (list[middle] === target) {
+    return middle;
+  }
+
+  if (list[middle] > target) {
+    return binarySearchRecursive(list, target, left, middle + 1);
+  }
+
+  if (list[middle] <= target) {
+    return binarySearchRecursive(list, target, middle + 1, right);
+  }
+}
+
+module.exports = {
+  binarySearch,
+  binarySearchRecursive,
+};
