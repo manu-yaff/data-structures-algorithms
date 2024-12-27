@@ -26,7 +26,7 @@ describe(Stack.name, () => {
   });
 
   describe(Stack.prototype.push.name, () => {
-    it('should push element to empty stack', () => {
+    it('should push elements to stack', () => {
       // Arrange
       const stack = new Stack();
 
@@ -49,7 +49,7 @@ describe(Stack.name, () => {
       const poppedItem = stack.pop();
 
       // Assert
-      expect(poppedItem).toBe(undefined);
+      expect(poppedItem).toBe(null);
     });
 
     it('should return popped item', () => {
@@ -81,7 +81,7 @@ describe(Stack.name, () => {
       expect(peek).toBe(1);
     });
 
-    it('should return undefined when stack is empty', () => {
+    it('should return null when stack is empty', () => {
       // Arrange
       const stack = new Stack();
 
@@ -89,7 +89,7 @@ describe(Stack.name, () => {
       const peek = stack.peek();
 
       // Assert
-      expect(peek).toBe(undefined);
+      expect(peek).toBe(null);
     });
   });
 
