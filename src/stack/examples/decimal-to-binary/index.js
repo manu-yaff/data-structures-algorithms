@@ -1,4 +1,4 @@
-const Stack = require('../../implementation/index');
+const Stack = require('../../implementation/array/index');
 
 /**
  * Converts decimal number to the specify base, max base is 16

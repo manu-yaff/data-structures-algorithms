@@ -1,4 +1,4 @@
-const Stack = require('../../implementation/index');
+const Stack = require('../../implementation/array/index');
 
 function symbolsMatch(closingSymbol, openingSymbol) {
   const matching = {
