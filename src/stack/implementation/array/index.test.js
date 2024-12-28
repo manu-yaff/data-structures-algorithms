@@ -1,4 +1,5 @@
 const Stack = require('./index');
+
 describe(Stack.name, () => {
   describe(Stack.prototype.isEmpty.name, () => {
     it('should return true for empty stack', () => {
