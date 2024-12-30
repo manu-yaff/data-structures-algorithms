@@ -1,34 +1,28 @@
 /**
- * Bubble sort
- *
- * Assuming items are sorted in increasing-order
- *
- * Idea:
- * - in each iteration move the biggest element to the end of the array and repeat
- * the process for each element in the list
+ * Sorts array in ascending order with bubble sort algorithm. Modifies the array
+ * in place
+ * @param {array} list The list to be sorted
+ * @returns {array} The list sorted in ascending order
  */
-
-// Time complexity O(n^2)
-// Space complexity O(1)
-function bubbleSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
+function bubbleSort(list) {
+  for (let j = 0; j < list.length; j++) {
     let swap = false;
-    for (let j = 0; j < arr.length - i - 1; j++) {
-      let currentIndex = j;
-      let nextIndex = j + 1;
 
-      if (arr[currentIndex] > arr[nextIndex]) {
-        let temp = arr[currentIndex];
-        arr[currentIndex] = arr[nextIndex];
-        arr[nextIndex] = temp;
+    for (let i = 0; i < list.length - 1 - j; i++) {
+      if (list[i] > list[i + 1]) {
+        let temp = list[i + 1];
+        list[i + 1] = list[i];
+        list[i] = temp;
         swap = true;
       }
     }
 
-    if (swap === false) return arr;
+    if (swap === false) {
+      break;
+    }
   }
 
-  return arr;
+  return list;
 }
 
 module.exports = bubbleSort;
