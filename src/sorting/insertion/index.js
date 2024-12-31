@@ -1,33 +1,22 @@
 /**
- * Insertion sort
- *
- * Assuming items are sorted in increasing-order
- *
- * Idea:
- * - start from the second element, for each element find its right position
- * - if the element is less than the element in the sorted part, move it until
- * the ideal position is found
+ * Sorts array using insertion sort algorithm. Modifies the array in place
+ * @param {Array} list The list to be sorted
+ * @returns {Array} The list sorted in increasing order
  */
-
-// Time complexity O(n^2)
-// Space complexity O(1)
-function insertionSort(arr) {
-  if (arr.length === 1) return arr;
-
-  for (let i = 1; i < arr.length; i++) {
+function insertionSort(list) {
+  for (let i = 1; i < list.length; i++) {
     let j = i;
 
-    while (j > 0 && arr[j] < arr[j - 1]) {
-      let temp = arr[j];
-
-      arr[j] = arr[j - 1];
-      arr[j - 1] = temp;
+    while (j >= 1 && list[j] < list[j - 1]) {
+      let temp = list[j - 1];
+      list[j - 1] = list[j];
+      list[j] = temp;
 
       j--;
     }
   }
 
-  return arr;
+  return list;
 }
 
 module.exports = insertionSort;
