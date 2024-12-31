@@ -1,51 +1,65 @@
 /**
- * Quick sort
- *
- * Assuming items are sorted in increasing-order
- *
- * Idea:
- *
- * - find a pivot, then move smaller elements to the left, and bigger ones to the
- * right. At the end of every iteration, pivot is already in its correct position.
- * Then repeat the process for the left and right sub arrays
- * - to move the elements, if current element is less than pivot, increment pointer i
- * and interchange element at i for element at j
- * at the end swap pivot for the element at position 1 + 1
+ * Sorts the list in ascending order using quick sort algorithm
+ * @param {Array} list The list to be sorted
+ * @returns {Array} The list sorted in increasing order
  */
+function quickSort(list) {
+  const first = 0;
+  const last = list.length - 1;
 
-// Time complexity O(n^2)
-// Space complexity O(log n)
-function quickSort(arr, low, high) {
-  if (low < high) {
-    let pivot = partition(arr, low, high);
-
-    quickSort(arr, low, pivot - 1);
-    quickSort(arr, pivot + 1, high);
-  }
-
-  return arr;
+  return quickSortHelper(list, first, last);
 }
 
-function partition(arr, low, high) {
-  let pivot = arr[high];
-  let i = low - 1; // index of the smallest element
+/**
+ * Recursively calls the quick sort algorithms, for left and right partition
+ * until the first and right indexes cross
+ * @param {Array} list The Original list
+ * @param {number} first The index which indicates the start of the list
+ * @param {number} last The index which indicates the end of the list
+ * @returns {Array} The list where elements to the left of pivot are smaller
+ * and elements to its right are equal or bigger
+ */
+function quickSortHelper(list, first, last) {
+  if (first < last) {
+    const pivot = partition(list, first, last);
 
-  for (let j = low; j <= high - 1; j++) {
-    if (arr[j] < pivot) {
+    quickSortHelper(list, first, pivot - 1);
+    quickSortHelper(list, pivot + 1, last);
+  }
+
+  return list;
+}
+
+function partition(list, first, last) {
+  // we need first and last, to know which are the limits of our list, since we
+  // are modifying the list in place
+  let pivotIndex = last;
+  let j = first;
+  let i = j - 1;
+
+  // from the beginning of the list until the pivot index
+  // if item is less than pivot value, move it to the next left index (which is 'i')
+  while (j < pivotIndex) {
+    if (list[j] < list[pivotIndex]) {
       i++;
 
-      let temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+      let temp = list[i];
+      list[i] = list[j];
+      list[j] = temp;
     }
+    j++;
   }
 
-  // move the pivot to the right of the last smallest element
-  let temp = arr[i + 1];
-  arr[i + 1] = arr[high];
-  arr[high] = temp;
+  // move pivot to its position, that'll be i + 1, which means all elements to the
+  // left are smaller
+  i++;
+  let aux = list[i];
+  list[i] = list[j];
+  list[j] = aux;
 
-  return i + 1;
+  return i;
 }
+
+quickSort([54, 26, 93, 17, 77, 31, 44, 55, 20]);
 
 module.exports = quickSort;
