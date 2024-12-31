@@ -1,67 +1,60 @@
 /**
- * Merge sort
- *
- * Assuming items are sorted in increasing-order
- *
- * Idea:
- *
- * - get the left and right arrays
- * - sort the left and right arrays
- * - merged the sorted versions of the arrays
- *
+ * Sorts array using merge sort algorithm. Modifies the array in place
+ * @param {Array} list The list to be sorted
+ * @returns {Array} The list sorted in increasing order
  */
+function mergeSort(list) {
+  if (list.length <= 1) {
+    return list;
+  } else {
+    const half = Math.floor(list.length / 2);
 
-// Time complexity O(n log n)
-// Space complexity O(n)
-function mergeSort(arr) {
-  if (arr.length <= 1) {
-    return arr;
+    const leftList = list.slice(0, half);
+    const rightList = list.slice(half);
+
+    return merge(list, mergeSort(leftList), mergeSort(rightList));
   }
-
-  // get left and right arrays
-  let middle = Math.floor(arr.length / 2);
-  let leftArray = arr.slice(0, middle);
-  let rightArray = arr.slice(middle);
-
-  // sort both arrays
-  let sortedLeftArray = mergeSort(leftArray);
-  let sortedRightArray = mergeSort(rightArray);
-
-  // merge both sorted arrays
-  return merge(arr, sortedLeftArray, sortedRightArray);
 }
 
-// merge the two arrays
-function merge(arr, leftArray, rightArray) {
-  let originalIndex = 0;
-  let leftIndex = 0;
-  let rightIndex = 0;
+/**
+ * Merge two sorted lists in ascending order, updates the original list
+ * @param {Array} original The list that will contain the ordered list
+ * @param {Array} l1 First ordered list
+ * @param {Array} l2 Second ordered list
+ * @returns {Array} The list sorted in increasing order
+ */
+function merge(originalList, l1, l2) {
+  let p1 = 0;
+  let p2 = 0;
+  let original = 0;
 
-  while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
-    if (leftArray[leftIndex] < rightArray[rightIndex]) {
-      arr[originalIndex] = leftArray[leftIndex];
-      leftIndex++;
+  while (p1 < l1.length && p2 < l2.length) {
+    if (l1[p1] < l2[p2]) {
+      originalList[original] = l1[p1];
+
+      p1++;
     } else {
-      arr[originalIndex] = rightArray[rightIndex];
-      rightIndex++;
+      originalList[original] = l2[p2];
+
+      p2++;
     }
 
-    originalIndex++;
+    original++;
   }
 
-  while (leftIndex < leftArray.length) {
-    arr[originalIndex] = leftArray[leftIndex];
-    leftIndex++;
-    originalIndex++;
+  while (p1 < l1.length) {
+    originalList[original] = l1[p1];
+    p1++;
+    original++;
   }
 
-  while (rightIndex < rightArray.length) {
-    arr[originalIndex] = rightArray[rightIndex];
-    rightIndex++;
-    originalIndex++;
+  while (p2 < l2.length) {
+    originalList[original] = l2[p2];
+    p2++;
+    original++;
   }
 
-  return arr;
+  return originalList;
 }
 
 module.exports = mergeSort;
