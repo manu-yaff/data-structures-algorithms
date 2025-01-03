@@ -109,4 +109,62 @@ describe(Graph.name, () => {
       expect(Array.from(vertices)).toEqual([1, 2, 3]);
     });
   });
+
+  describe(Graph.prototype.bfs.name, () => {
+    it('should do bfs correctly 1', () => {
+      // Arrange
+      const graph = new Graph();
+
+      graph.addEdge(0, 1);
+      graph.addEdge(0, 2);
+      graph.addEdge(0, 3);
+      graph.addEdge(1, 2);
+      graph.addEdge(2, 4);
+
+      // Act
+      const result = graph.bfs(0);
+
+      // Assert
+      expect(result).toEqual([0, 1, 2, 3, 4]);
+    });
+
+    it('should do bfs correctly 2', () => {
+      // Arrange
+      const graph2 = new Graph();
+
+      graph2.addEdge(0, 1);
+      graph2.addEdge(1, 3);
+      graph2.addEdge(3, 4);
+      graph2.addEdge(4, 6);
+      graph2.addEdge(5, 2);
+      graph2.addEdge(0, 5);
+      graph2.addEdge(2, 6);
+
+      // Act
+      const result = graph2.bfs(0);
+
+      // Assert
+      expect(result).toEqual([0, 1, 5, 3, 2, 4, 6]);
+    });
+
+    it('should do bfs correcly 3', () => {
+      // Arrange
+      const graph3 = new Graph();
+
+      graph3.addEdge(0, 1);
+      graph3.addEdge(1, 2);
+      graph3.addEdge(2, 3);
+      graph3.addEdge(3, 4);
+      graph3.addEdge(4, 5);
+      graph3.addEdge(5, 6);
+      graph3.addEdge(6, 7);
+      graph3.addEdge(0, 7);
+
+      // Act
+      const result = graph3.bfs(0);
+
+      // Assert
+      expect(result).toEqual([0, 1, 7, 2, 3, 4, 5, 6]);
+    });
+  });
 });
