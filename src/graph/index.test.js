@@ -167,4 +167,23 @@ describe(Graph.name, () => {
       expect(result).toEqual([0, 1, 7, 2, 3, 4, 5, 6]);
     });
   });
+
+  describe(Graph.prototype.dfs.name, () => {
+    it('should do bfs correctly', () => {
+      // Arrange
+      const graph = new Graph();
+
+      graph.addEdge(0, 1);
+      graph.addEdge(0, 2);
+      graph.addEdge(0, 3);
+      graph.addEdge(1, 2);
+      graph.addEdge(2, 4);
+
+      // Act
+      const result = graph.dfs(0);
+
+      // Assert
+      expect(result).toEqual([0, 3, 2, 4, 1]);
+    });
+  });
 });

@@ -89,7 +89,7 @@ class Graph {
   }
 
   /**
-   *
+   * Traverse the graph with the BFS algorithm
    * @param {number} startingVertex The initial vertex to start the bfs
    * @returns {Array<number>} Array with the vertices in the order they were
    * process. Just for testing purposes
@@ -116,6 +116,40 @@ class Graph {
         if (!visited.has(neighbor)) {
           visited.set(neighbor, true);
           queue.push(neighbor);
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Traverse the graph with the DFS algorithm
+   * @param {number} startingVertex The initial vertex to start the dfs
+   * @returns {Array<number>} Array with the vertices in the order they were
+   * process. Just for testing purposes
+   */
+  dfs(startingVertex) {
+    const result = [];
+    const visited = new Map();
+    const stack = [];
+
+    stack.push(startingVertex);
+
+    while (stack.length > 0) {
+      const currentVertex = stack.pop();
+
+      if (!visited.has(currentVertex)) {
+        result.push(currentVertex);
+        visited.set(currentVertex, true);
+      }
+
+      // add all unvisited neighbors to the stack
+      for (const neighbor of this.#adjacencyList
+        .get(currentVertex)
+        .getConnections()) {
+        if (!visited.has(neighbor)) {
+          stack.push(neighbor);
         }
       }
     }
