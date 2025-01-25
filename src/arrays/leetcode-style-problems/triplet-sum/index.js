@@ -1,30 +1,36 @@
-function threeSum(nums) {
-  let output = [];
+/**
+ * 3Sum
+ * Link: https://leetcode.com/problems/3sum/description/
+ */
+function threeSum(arr) {
+  const result = [];
 
-  nums.sort((a, b) => a - b);
+  arr.sort((a, b) => a - b);
 
-  for (let i = 0; i < nums.length; i++) {
-    let currentNumber = nums[i];
+  for (let i = 0; i < arr.length; i++) {
     let left = i + 1;
-    let right = nums.length - 1;
-    let target = 0 - currentNumber;
+    let right = arr.length - 1;
 
-    if (i > 0 && nums[i] === nums[i - 1]) {
+    if (i > 0 && arr[i] === arr[i - 1]) {
       continue;
     }
 
     while (left < right) {
-      const currentSum = nums[left] + nums[right];
+      const current = arr[i];
+      const leftNumber = arr[left];
+      const rightNumber = arr[right];
 
-      if (currentSum === target) {
-        const triplet = [currentNumber, nums[left], nums[right]];
-        output.push(triplet);
+      const sum = current + leftNumber + rightNumber;
+
+      if (sum === 0) {
+        result.push([current, leftNumber, rightNumber]);
+
         left++;
 
-        while (nums[left] === nums[left - 1] && left < right) {
+        while (arr[left] === arr[left - 1] && left < right) {
           left++;
         }
-      } else if (currentSum > target) {
+      } else if (sum > 0) {
         right--;
       } else {
         left++;
@@ -32,7 +38,7 @@ function threeSum(nums) {
     }
   }
 
-  return output;
+  return result;
 }
 
 module.exports = threeSum;
