@@ -2,7 +2,6 @@
  * Two Sum II - Input Array Is Sorted
  * Link: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
  */
-
 function twoSum(nums, target) {
   let left = 0;
   let right = nums.length - 1;
