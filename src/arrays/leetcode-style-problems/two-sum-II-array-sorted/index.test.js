@@ -15,7 +15,7 @@ describe(twoSum.name, () => {
     {
       nums: [-1, 0],
       target: -1,
-      expectedResult: [1, 2, 6],
+      expectedResult: [1, 2],
     },
   ])(
     'twoSum($nums, $target) => $expectedResult',
