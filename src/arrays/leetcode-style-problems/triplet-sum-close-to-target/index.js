@@ -5,8 +5,8 @@
 function threeSumClosest(arr, target) {
   arr.sort((a, b) => a - b);
 
-  let minSum = Infinity;
-  let minDiff = Infinity;
+  // [diff, sum]
+  const minTriplet = [Infinity, 0];
 
   for (let i = 0; i < arr.length; i++) {
     let left = i + 1;
@@ -17,33 +17,27 @@ function threeSumClosest(arr, target) {
     }
 
     while (left < right) {
-      let currentSum = arr[i] + arr[left] + arr[right];
-      let currentDiff = Math.abs(currentSum - target);
+      const sum = arr[i] + arr[left] + arr[right];
+      const diff = Math.abs(target - sum);
 
-      if (currentDiff < minDiff) {
-        minDiff = currentDiff;
-        minSum = currentSum;
-      } else if (currentDiff === minDiff) {
-        if (currentSum < minSum) {
-          minSum = currentSum;
-        }
+      if (diff === 0) return minTriplet[1];
+
+      if (diff < minTriplet[0]) {
+        minTriplet[0] = diff;
+        minTriplet[1] = sum;
+      } else if (diff === minTriplet[0] && sum < minTriplet[1]) {
+        minTriplet[0] = diff;
+        minTriplet[1] = sum;
       }
 
-      if (currentSum > target) {
+      if (sum > target) {
         right--;
-      } else if (currentSum < target) {
-        left++;
       } else {
         left++;
-
-        while (arr[left] === arr[left - 1] && left < right) {
-          left++;
-        }
       }
     }
   }
-
-  return minSum;
+  return minTriplet[1];
 }
 
 module.exports = threeSumClosest;
