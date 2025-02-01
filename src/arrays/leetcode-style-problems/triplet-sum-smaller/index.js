@@ -27,5 +27,3 @@ function searchTriplets(arr, target) {
 
   return count;
 }
-
-console.log(searchTriplets([-1, 4, 2, 1, 3], 5));
