@@ -1,6 +1,6 @@
 /**
  * Reverse Vowels of a String
- * https://leetcode.com/problems/reverse-vowels-of-a-string/
+ * Link: https://leetcode.com/problems/reverse-vowels-of-a-string/
  */
 function reverseVowels(s) {
   const vowels = ['a', 'e', 'i', 'o', 'u'];
