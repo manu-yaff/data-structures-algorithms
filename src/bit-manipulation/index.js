@@ -9,3 +9,15 @@ function hammingWeight(n) {
 
   return setBits.length;
 }
+
+// bit manipulation
+// function hammingWeight(n) {
+//   let count = 0;
+//
+//   while (n > 0) {
+//     count += n & 1;
+//     n = n >> 1;
+//   }
+//
+//   return count;
+// }
